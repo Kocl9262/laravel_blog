@@ -7,10 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AboutController extends Controller
+class DodajController extends Controller
 {
-    public function about()
-    {
-        return view("about");
-    }
+    //
 }

@@ -11,13 +11,10 @@
 |
 */
 
-Route::get("pozdrav", ["uses" => "PozdravController@index"]);
+use App\Category;
+use App\Post;
+use App\Comment;
 
-Route::get("/", ["uses" => "BlogController@blog"]);
-
-Route::get("/about", ["uses" => "AboutController@about"]);
-
-Route::get("/add", ["uses" => "AddController@add"]);
 
 
 
@@ -32,6 +29,32 @@ Route::get("/add", ["uses" => "AddController@add"]);
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get("", ["uses" => "BlogController@blog", "as" => "home"]);
+
+    Route::get("shranjeno", ["uses" => "BlogController@shranjeno"]);
+
+
+    Route::get("objava", ["uses" => "BlogController@objava", "as" => "objava"]);
+
+    Route::get("about", ["uses" => "BlogController@about", "as" => "about"]);
+
+    Route::get("form", ["uses" => "BlogController@form", "as" => "form"]);
+    Route::post("form", ["uses" => "BlogController@store"]);
+
+    Route::get("/objava/{id}", ["uses" => "BlogController@show"]);
+
+    Route::post("/objava/{id}/comments", ["uses" => "BlogController@storeComment", "as" => "save.comment" ]);
+
+    Route::get("roles", ["uses" => "BlogController@roles"]);
+    Route::post("roles", ["uses" => "BlogController@storeRole", "as" => "save.role"]);
+
+    Route::get("categories", ["uses" => "BlogController@categories"]);
+    Route::post("categories", ["uses" => "BlogController@storeCategory", "as" => "save.category"]);
+
+    Route::get("/profile/{id}", ["uses" => "BlogController@profile"]);
+
 });

@@ -12,10 +12,10 @@
     <title>@yield("tab_title")</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/blog-home.css" rel="stylesheet">
+    <link href="/css/blog-home.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,17 +39,44 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="/">MyBlog</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="/about">About</a>
                     </li>
-                    <li>
-                        <a href="#">Add post</a>
-                    </li>
+                </ul>
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    @else
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="/form">Add post</a>
+                            </li>
+                            <li>
+                                <a href="/categories">Categories</a>
+                            </li>
+                            <li>
+                                <a href="/roles">Roles</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -65,12 +92,15 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h1 class="page-header">
-                    @yield("page_title")
-                    <small>@yield("small_page_title")</small>
-                </h1>
 
-                @yield("content")
+            <h1 class="page-header">
+                @yield("page_title")
+                <small>@yield("small_page_title")</small>
+            </h1>
+
+            @yield("content")
+
+
 
             </div>
 
@@ -134,10 +164,6 @@
             </div>
 
         </div>
-        <!-- /.row -->
-
-        <hr>
-
         <!-- Footer -->
         <footer>
             <div class="row">
@@ -153,10 +179,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
 </body>
 
