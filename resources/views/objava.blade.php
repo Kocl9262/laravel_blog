@@ -22,20 +22,33 @@
 
     @foreach($posts as $post)
 
-        <p>Author: {{ $post->name }}</p>
+        <div>
+
+            <p class="inline_p">Blogger: {{ $post->name }}</p>
+            @if($post->created_at != $post->updated_at)
+
+                <p class="inline_p pull_right">Edited: {{ $post->updated_at->diffForHumans() }}</p>
+
+            @else
+
+                <p class="inline_p pull_right">Posted: {{ $post->created_at->diffForHumans() }}</p>
+
+            @endif
+
+        </div>
+
         <h2>{{ $post->title }}</h2>
-        <pre>{{ $post->body }}</pre>
 
-        @foreach($post->categories as $category)
+        <div class="text-muted">
+            Categories:
+            @foreach($post->categories as $category)
 
+                <small>{{ $category->name }}, </small>
 
+            @endforeach
+        </div>
 
-            <p class="text-muted">
-                <small>{{ $category->name }}</small>
-            </p>
-
-
-        @endforeach
+        <p class="well">{{ $post->body }}</p>
 
         <hr>
 
@@ -51,17 +64,21 @@
 
                 <div class="well">
 
-                    @if($comment->created_at != $comment->updated_at)
+                    <div>
 
-                        <p>Edited: {{ $comment->updated_at->diffForHumans() }}</p>
+                        <p class="inline_p">{{ $comment->name }}</p>
+                        @if($comment->created_at != $comment->updated_at)
 
-                    @else
+                            <p class="inline_p pull_right">Edited: {{ $comment->updated_at->diffForHumans() }}</p>
 
-                        <p>Posted: {{ $comment->created_at->diffForHumans() }}</p>
+                        @else
 
-                    @endif
+                            <p class="inline_p pull_right">Posted: {{ $comment->created_at->diffForHumans() }}</p>
 
-                    <p><b>User: {{ $comment->name }}</b></p>
+                        @endif
+
+                    </div>
+                    <hr>
                     <p>{{ $comment->body }}</p>
 
                 </div>
@@ -83,7 +100,6 @@
         </div>
     @else
 
-        <h4>Napiši komentar:</h4>
         <form class="form-horizontal" role="form" action="{{ route("save.comment", ["id" => $post->id]) }}" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">

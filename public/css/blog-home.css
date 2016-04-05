@@ -11,3 +11,18 @@ body {
 footer {
     margin: 50px 0;
 }
+
+.inline_p {
+    display: inline;
+}
+
+.pull_right {
+    float: right;
+}
+
+.input_box {
+    display: inline;
+}
+[type="checkbox"] {
+    vertical-align:middle;
+}

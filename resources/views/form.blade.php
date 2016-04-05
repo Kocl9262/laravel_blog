@@ -43,11 +43,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Categories</label>
+                <label class="control-label col-sm-2" for="categories">Categories: </label>
 
                 @foreach($categories as $category)
 
-                    <input type="checkbox" name="categories[]" class="checkbox" value="{{ $category->id }}"> {{ $category->name }}
+                    <input type="checkbox" name="categories[]" class="checkbox input_box" value="{{ $category->id }}"> {{ $category->name }},
 
                 @endforeach
 
