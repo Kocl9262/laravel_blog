@@ -105,7 +105,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="body">Comment: </label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="7" name="body" id="body" placeholder="Write your blog post"></textarea>
+                    <textarea class="form-control" rows="7" name="body" id="body" placeholder="Comment"></textarea>
                 </div>
             </div>
             <div class="form-group">

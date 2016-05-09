@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="/css/blog-home.css" rel="stylesheet">
+
     <link href="/css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -96,7 +97,6 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-
             <h1 class="page-header">
                 @yield("page_title")
                 <small>@yield("small_page_title")</small>
@@ -104,14 +104,10 @@
 
             @yield("content")
 
-
-
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">
-
-
 
                 <!-- Side Widget Well -->
                 <div class="well">

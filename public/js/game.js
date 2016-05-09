@@ -13,7 +13,7 @@ $(document).ready(function() {
         var max = 100;
         var compGuess = -1;
 
-        if (scrnb < 0 || scrnb > 100 || isNaN(scrnb)) {
+        if (scrnb < 1 || scrnb > 100 || isNaN(scrnb)) {
             $(".list").append("<div class='item'>Enter number between 1 and 100</div>");
 
 
