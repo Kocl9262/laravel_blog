@@ -57,4 +57,6 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get("/profile/{id}", ["uses" => "BlogController@profile"]);
 
+    Route::get("game", ["uses" => "BlogController@game"]);
+
 });

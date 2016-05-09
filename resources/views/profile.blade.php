@@ -28,9 +28,7 @@
         <h2>{{ $user->email }}</h2>
         <pre>{{ $user->role_id }}</pre>
 
-        @foreach($user->role as $role)
-            {{ $role->name }}
-        @endforeach
+
 
     @endforeach
 

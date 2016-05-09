@@ -118,10 +118,16 @@ class BlogController extends Controller
 
         return redirect("categories");
     }
+
     public function profile($id)
     {
         $user = User::find($id);
 
         return view("profile", ["users" => [$user]]);
+    }
+
+    public function game()
+    {
+        return view("game");
     }
 }
